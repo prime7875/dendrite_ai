@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="mb-4">To-Do List</h1>
+    <ul class="list-group">
+        {% for todo in todos %}
+            <li class="list-group-item">
+                <h5 class="mb-1">{{ todo['title'] }}</h5>
+                <p class="mb-1">{{ todo['description'] }}</p>
+                <p class="mb-1">{{ todo['time'] }}</p>
+                <a href="{{ url_for('edit_todo', todo_id=todo['id']) }}" class="btn btn-info btn-sm mr-2">Edit</a>
+                <a href="{{ url_for('delete_todo', todo_id=todo['id']) }}" class="btn btn-danger btn-sm">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_todo') }}" class="btn btn-success mt-3">Add a new To-Do</a>
+</div>
+
+</body>
+</html>
